@@ -1,8 +1,6 @@
 import socket
 import argparse
 import re
-import threading
-from queue import Queue
 
 def scanPort(t, n):
     try:
