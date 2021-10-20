@@ -9,6 +9,10 @@ def assignSMTPserver(opt):
         return ["smtp.gmail.com", 465]
     elif opt == 2:
         return ["smtp.mail.yahoo.com", 465]
+    elif opt == 3:
+        server = input("Enter your server name: ")
+        port = int(input("Specify the port number: "))
+        return [server, port]
 
 def attachFile(msg, f):
     binaryFile = open(f, "rb")
@@ -19,7 +23,7 @@ def attachFile(msg, f):
     msg.attach(payload)
 
 def sendMail():
-    print("1. Gmail\n2. Yahoo\n")
+    print("1. Gmail\n2. Yahoo\n3. Use your own SMTP server\n")
     opt = int(input("Enter your email service: "))
     serverName, serverPort = assignSMTPserver(opt)
     print(serverName, serverPort)
@@ -28,7 +32,11 @@ def sendMail():
 
     email = input("Enter your email: ")
     password = input("Enter your password: ")
-    server.login(email, password)
+    try:
+        server.login(email, password)
+    except:
+        print("[-] Login failed, please your server settings")
+        return
     
     body = MIMEMultipart('alternative')
     body["From"] = input("From? ")
@@ -43,6 +51,11 @@ def sendMail():
 
     finalMessage = body.as_string()
     receiverMail = input("Enter email of receiver: ")
-    server.sendmail(email, receiverMail, finalMessage)
+    try:
+        server.sendmail(email, receiverMail, finalMessage)
+        print("[+] Email sent successfully")
+    except:
+        print("[-] Email failed to send")
+        return
 
 sendMail()
