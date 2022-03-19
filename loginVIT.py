@@ -1,7 +1,7 @@
 import requests
 
-data = {'userId': '19BCE2030',
-        'password': 'GUV67N',
+data = {'userId': '',
+        'password': '',
         'serviceName': 'ProntoAuthentication',
         'Submit22': 'Login'
         }
