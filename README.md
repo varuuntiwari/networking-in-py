@@ -11,3 +11,5 @@ Uses OpenWeatherMap API to retrieve current weather for any city in JSON format.
 A simple script for practicing web scrapping in Python3. This script simply extracts headings of latest news from the NDTV website. *Requires `bs4` and `lxml` modules to work.*
 ## rockPaperScissorsLizardSpock.py
 The game of Rock, Paper, Scissors, Lizard and Spock played between two players using sockets. Make sure to keep both devices in the same network and the port specified in the script free while connecting.
+## loginVIT.py
+A simple script to login to my university's WiFi.
